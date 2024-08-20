@@ -1,0 +1,10 @@
+Compression_Scripts/Logs/*
+Compression_Scripts/build/*
+Error_Analysis_Scripts/build/*
+Error_Analysis_Scripts/Logs/*
+Post_Hoc_Scripts/Logs/*
+.venv/
+Compressors/*
+
+
+
