@@ -26,6 +26,6 @@ def main():
 
 
 if __name__ == "__main__":
-    extract_lines("")
+    extract_lines(10000, "/home/tus53997/SeqBench/Sample/ERR1044277_2.fastq", "/home/tus53997/SeqBench/Sample/ERR1044277_2_Sample.fastq")
 
 

@@ -77,9 +77,10 @@ class PostHocAnalysis:
         error_log = self.path_generator.get_post_hoc_truth_error_log_path(job_index, file_pair_index, file_index)
         nodes = self.config.get('nodes', 1)  # Default to 1 node if not specified
         ppn = self.config.get('ppn', 8)  # Default to 8 processor per node if not specified
-        conda_path = self.config.get('conda_path', '/home/tus53997/miniconda3/bin/activate')
+        conda_path = self.config.get('conda_path', '')
         walltime = self.config.get('walltime', "24:00:00")
         email = self.config.get('email', "default@gamil.com")
+        node_size = self.config.get('node_size', 'normal')
 
         with open(self.template_path) as f:
             template = Template(f.read())
@@ -93,6 +94,7 @@ class PostHocAnalysis:
             walltime=walltime,
             conda_path=conda_path,
             email=email,
+            node_size=node_size,
             output_log=output_log,
             error_log=error_log,
             threads=nodes * ppn,
@@ -137,9 +139,10 @@ class PostHocAnalysis:
         error_log = self.path_generator.get_post_hoc_error_log_path(job_index, file_pair_index, file_index)
         nodes = self.config.get('nodes', 1)  # Default to 1 node if not specified
         ppn = self.config.get('ppn', 8)  # Default to 8 processor per node if not specified
-        conda_path = self.config.get('conda_path', '/home/tus53997/miniconda3/bin/activate')
+        conda_path = self.config.get('conda_path', '')
         walltime = self.config.get('walltime', "24:00:00")
         email = self.config.get('email', "default@gamil.com")
+        node_size = self.config.get('node_size', 'normal')
 
         with open(self.job_template_path) as f:
             template = Template(f.read())
@@ -159,6 +162,7 @@ class PostHocAnalysis:
             walltime=walltime,
             conda_path=conda_path,
             email=email,
+            node_size=node_size,
             output_log=output_log,
             error_log=error_log,
             threads=nodes * ppn,
@@ -227,9 +231,9 @@ class PostHocAnalysis:
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-    config_name = "/home/tus53997/SeqBench2/Jobs/bench.json"
-    truth_vcf_template = '/home/tus53997/SeqBench2/Scripts_Template/Compute_Node/Compute_truth_vcf.sh'
-    post_hoc_template = '/home/tus53997/SeqBench2/Scripts_Template/Compute_Node/Compute_post_hoc.sh'
+    config_name = "../Jobs/sample.json"
+    truth_vcf_template = '../Scripts_Template/truth_vcf.sh'
+    post_hoc_template = '../Scripts_Template/post_hoc.sh'
     post_hoc_analysis = PostHocAnalysis(config_name, truth_vcf_template, post_hoc_template)
     job_name = "truth_vcf"
     # print(post_hoc_analysis.check_job_status(71595))

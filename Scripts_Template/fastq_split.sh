@@ -3,6 +3,7 @@
 #PBS -N {{ job_name }}
 #PBS -l nodes={{ nodes }}:ppn={{ ppn }}
 #PBS -M {{ email }}
+#PBS -q {{ node_size }}
 #PBS -o {{ output_log }}
 #PBS -e {{ error_log }}
 
@@ -22,8 +23,8 @@ import fastq_processor
 fastq_processor.process_fastq('{{ input_path }}', '{{ output_bases_id_path }}', '{{ output_bases_path }}', '{{ output_quality_id_path }}', '{{ output_quality_path }}')
 
 # Compress the output files
-os.system(f'gzip -9 -k {{ output_bases_id_path }}')
-os.system(f'gzip -9 -k {{ output_bases_path }}')
+os.system(f'gzip -9 -f -k {{ output_bases_id_path }}')
+os.system(f'gzip -9 -f -k {{ output_bases_path }}')
 
 # Get the compressed file sizes
 compressed_bases_id_size = os.path.getsize('{{ output_bases_id_path }}.gz')
@@ -38,7 +39,7 @@ size_data = {
 }
 
 # Path to the JSON file
-json_file_path = '/home/tus53997/SeqBench2/field_size.json'
+json_file_path = './field_size.json'
 
 # Read existing data from the JSON file, if it exists and is valid
 try:

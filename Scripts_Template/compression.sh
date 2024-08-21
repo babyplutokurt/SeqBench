@@ -2,7 +2,6 @@
 #PBS -l walltime={{ walltime }}
 #PBS -N {{ job_name }}
 #PBS -q {{ node_size }}
-#PBS -q large
 #PBS -l nodes={{ nodes }}:ppn={{ ppn }}
 #PBS -M {{ email }}
 #PBS -o {{ output_log }}
@@ -38,8 +37,8 @@ OUTPUT_SIZE_MB=$(echo "scale=6; $OUTPUT_SIZE_BYTES / 1048576" | bc)
 # Conditionally calculate the ratio for SZ3 compressor
 if [ "{{ compressor }}" = "SZ3" ]; then
     # Load the compressed sizes from the JSON file
-    compressed_bases_id_size=$(python -c "import json; data=json.load(open('/home/tus53997/SeqBench2/field_size.json')); print(data['{{ input_path }}']['compressed_bases_id_size'])")
-    compressed_bases_size=$(python -c "import json; data=json.load(open('/home/tus53997/SeqBench2/field_size.json')); print(data['{{ input_path }}']['compressed_bases_size'])")
+    compressed_bases_id_size=$(python -c "import json; data=json.load(open('./field_size.json')); print(data['{{ input_path }}']['compressed_bases_id_size'])")
+    compressed_bases_size=$(python -c "import json; data=json.load(open('./field_size.json')); print(data['{{ input_path }}']['compressed_bases_size'])")
     TOTAL_COMPRESSED_SIZE_MB=$(echo "scale=6; ($compressed_bases_id_size + $compressed_bases_size) / 1048576 + $OUTPUT_SIZE_MB" | bc)
     RATIO=$(echo "scale=6; $INPUT_SIZE_MB / $TOTAL_COMPRESSED_SIZE_MB" | bc)
 elif [ "{{ compressor }}" = "BFQZIP" ]; then

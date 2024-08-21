@@ -211,7 +211,7 @@ class GenozipCommandGenerator(CommandGenerator):
         if job['name'].upper() != "GENOZIP":
             return []
 
-        credential_path = '/home/tus53997/SeqBench2/.genozip_license.v15'
+        credential_path = './.genozip_license.v15'
         absolute_credential_path = os.path.abspath(credential_path)
         print("absolute_credential_path: ", absolute_credential_path)
 
@@ -352,7 +352,7 @@ class CommandGeneratorFactory:
 
 
 if __name__ == "__main__":
-    config_path = "../Jobs/genozip.json"
+    config_path = "../Jobs/sample.json"
     factory = CommandGeneratorFactory(config_path)
     all_commands = factory.generate_all_commands()
     for file_pair_index, file_commands in enumerate(all_commands):

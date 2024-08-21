@@ -2,5 +2,15 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Compressors/BFQzip" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Compressors/BFQzip/external/SPRING" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Compressors/BFQzip/external/egap" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Compressors/BFQzip/external/gsufsort" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Compressors/BFQzip/external/libbsc" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Compressors/EnanoFASTQ" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Compressors/RENANO" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Compressors/SPRING" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Compressors/SZ3" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Compressors/fqzcomp" vcs="Git" />
   </component>
 </project>

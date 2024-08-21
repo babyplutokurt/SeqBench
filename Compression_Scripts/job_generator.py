@@ -12,6 +12,8 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'build'))
 import fastq_processor
 
 
+
+
 def check_job_status_depend(job_id):
     check_command = f"qstat -f {job_id}"
     try:
@@ -42,6 +44,7 @@ class JobGenerator:
         self.all_commands = self.factory.generate_all_commands()
         self.fast_split_template = fast_split_template
         self.fast_reconstruct_template = fast_reconstruct_template
+        self.conda_path = ''
 
     def create_compression_metrics_csv(self, file_pair_index, file_index):
         metrics_path = self.path_generator.get_compression_metric_path(file_pair_index, file_index)
@@ -85,10 +88,10 @@ class JobGenerator:
             compressor_name += '_referenced'
         nodes = self.config.get('nodes', 1)  # Default to 1 node if not specified
         ppn = self.config.get('ppn', 8)  # Default to 8 processor per node if not specified
-        conda_path = self.config.get('conda_path', '/home/tus53997/miniconda3/bin/activate')
+        conda_path = self.config.get('conda_path', self.conda_path)
         walltime = self.config.get('walltime', "24:00:00")
         email = self.config.get('email', "default@gamil.com")
-        node_size = 'normal'
+        node_size = self.config.get('node_size', 'normal')
         compressor = self.config['jobs'][job_index]['name'].upper()
         active_dependencies = []
         for dep in dependencies:
@@ -156,9 +159,10 @@ class JobGenerator:
                 error_log = self.path_generator.get_error_log_path(0, file_pair_index, file_index, 'fastq_split')
                 nodes = self.config.get('nodes', 1)  # Default to 1 node if not specified
                 ppn = self.config.get('ppn', 8)  # Default to 8 processor per node if not specified
-                conda_path = self.config.get('conda_path', '/home/tus53997/miniconda3/bin/activate')
+                conda_path = self.config.get('conda_path', self.conda_path)
                 walltime = self.config.get('walltime', "24:00:00")
                 email = self.config.get('email', "default@gamil.com")
+                node_size = self.config.get('node_size', 'normal')
                 build_pre_processing_cpp_path = self.path_generator.get_build_pre_processing_cpp_path()
 
                 with open(self.fast_split_template) as f:
@@ -168,6 +172,7 @@ class JobGenerator:
                     job_name=job_name,
                     nodes=nodes,
                     ppn=ppn,
+                    node_size=node_size,
                     walltime=walltime,
                     input_path=input_path,
                     output_bases_id_path=output_bases_id_path,
@@ -212,9 +217,10 @@ class JobGenerator:
         error_log = self.path_generator.get_error_log_path(0, file_pair_index, file_index, 'fastq_reconstruct')
         nodes = self.config.get('nodes', 1)  # Default to 1 node if not specified
         ppn = self.config.get('ppn', 8)  # Default to 8 processor per node if not specified
-        conda_path = self.config.get('conda_path', '/home/tus53997/miniconda3/bin/activate')
+        conda_path = self.config.get('conda_path', self.conda_path)
         walltime = self.config.get('walltime', "24:00:00")
         email = self.config.get('email', "default@gamil.com")
+        node_size = self.config.get('node_size', 'normal')
 
         active_dependencies = []
         for dep in dependencies:
@@ -231,6 +237,7 @@ class JobGenerator:
             job_name=job_name,
             nodes=nodes,
             ppn=ppn,
+            node_size=node_size,
             walltime=walltime,
             output_bases_id_path=output_bases_id_path,
             output_bases_path=output_bases_path,
@@ -303,6 +310,6 @@ class JobGenerator:
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname=s - %(message=s')
-    config_name = "../Jobs/bench2.json"
+    config_name = "../Jobs/sample.json"
     job_generator = JobGenerator(config_name)
     job_generator.generate_and_submit_jobs()

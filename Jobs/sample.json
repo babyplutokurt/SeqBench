@@ -3,8 +3,9 @@
   "storage_dir": "/scratch/tus53997/",
   "nodes": 1,
   "ppn": 16,
+  "node_size": "normal",
   "walltime": "48:00:00",
-  "email": "taolue.yang@temple.edu",
+  "email": "default",
   "conda_path": "/home/tus53997/miniconda3/bin/activate",
   "workflow": [
     "Compression",
@@ -13,30 +14,10 @@
   ],
   "input_file": [
     [
-      "/scratch/tus53997/FASTQ/HG00733_lib04_20171213_FAH37423_DD_guppy_0.5.1.fq"
-    ],
-    [
-      "/scratch/tus53997/FASTQ/SRR1295433_1.fastq",
-      "/scratch/tus53997/FASTQ/SRR1295433_2.fastq"
-    ],
-    [
-      "/scratch/tus53997/FASTQ/ERR899712_1.fastq",
-      "/scratch/tus53997/FASTQ/ERR899712_2.fastq"
-    ],
-    [
-      "/scratch/tus53997/FASTQ/ERR1050080_1.fastq"
-    ],
-    [
-      "/scratch/tus53997/FASTQ/ERR016126.filt.fastq"
-    ],
-    [
-      "/scratch/tus53997/FASTQ/ERR1044277_1.fastq"
-    ],
-    [
-      "/scratch/tus53997/FASTQ/ERR1044278_2.fastq"
+      "./Sample/ERR1044277_1_Sample.fastq"
     ]
   ],
-  "reference_file": "/work/tus53997/RefSeq/hg38.fa",
+  "reference_file": "./Sample/GCF_000001405.40_GRCh38.p14_genomic.fna",
   "jobs": [
     {
       "name": "SZ3",
@@ -46,38 +27,17 @@
       ]
     },
     {
-      "name": "SZ3",
+      "name": "spring",
       "options": [
-        "-f -1 {Binary_length} -M REL 0.02",
-        "-f -1 {Binary_length} -M REL 0.02"
+        "-c -l -q ill_bin",
+        "-d"
       ]
     },
     {
-      "name": "SZ3",
+      "name": "fqzcomp",
       "options": [
-        "-f -1 {Binary_length} -M REL 0.05",
-        "-f -1 {Binary_length} -M REL 0.05"
-      ]
-    },
-    {
-      "name": "SZ3",
-      "options": [
-        "-f -1 {Binary_length} -M REL 0.1",
-        "-f -1 {Binary_length} -M REL 0.1"
-      ]
-    },
-    {
-      "name": "SZ3",
-      "options": [
-        "-f -1 {Binary_length} -M REL 0.3",
-        "-f -1 {Binary_length} -M REL 0.3"
-      ]
-    },
-        {
-      "name": "SZ3",
-      "options": [
-        "-f -1 {Binary_length} -M REL 0.5",
-        "-f -1 {Binary_length} -M REL 0.5"
+        "-Q 3",
+        "-d"
       ]
     }
   ]

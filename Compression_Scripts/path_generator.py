@@ -336,11 +336,11 @@ class PathGenerator:
     def get_error_analysis_error_log_path(self, job_index, file_pair_index, file_index):
         logs_dir = os.path.join(self.project_base_dir, 'Error_Analysis_Scripts/Logs/logs')
         self.ensure_directory_exists(logs_dir)
-        return os.path.join(logs_dir, f"post_hoc_{file_pair_index}_{job_index}_{file_index}_error.log")
+        return os.path.join(logs_dir, f"error_analysis_{file_pair_index}_{job_index}_{file_index}_error.log")
 
 
 if __name__ == "__main__":
-    config_path = "../Jobs/bfqzip.json"  # Adjust the path as necessary
+    config_path = "../Jobs/sample.json"  # Adjust the path as necessary
     pg = PathGenerator(config_path)
     job_index = 0
     file_pair_index = 0  # example file pair index

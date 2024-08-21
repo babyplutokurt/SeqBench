@@ -3,6 +3,7 @@
 #PBS -N {{ job_name }}
 #PBS -l nodes={{ nodes }}:ppn={{ ppn }}
 #PBS -M {{ email }}
+#PBS -q {{ node_size }}
 #PBS -o {{ output_log }}
 #PBS -e {{ error_log }}
 

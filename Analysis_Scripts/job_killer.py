@@ -45,7 +45,7 @@ def delete_jobs(job_ids):
 
 if __name__ == "__main__":
     # Replace 'your_username' with the actual username
-    username = 'tus53997'
+    username = ''
 
     # List the user's jobs
     job_ids = list_user_jobs(username)

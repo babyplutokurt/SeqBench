@@ -68,9 +68,10 @@ class ErrorAnalysis:
 
         nodes = self.config.get('nodes', 1)  # Default to 1 node if not specified
         ppn = self.config.get('ppn', 8)  # Default to 8 processor per node if not specified
-        conda_path = self.config.get('conda_path', '/home/tus53997/miniconda3/bin/activate')
+        conda_path = self.config.get('conda_path', '')
         walltime = self.config.get('walltime', "24:00:00")
         email = self.config.get('email', "default@gamil.com")
+        node_size = self.config.get('node_size', 'normal')
 
         with open(self.template_path) as f:
             template = Template(f.read())
@@ -89,6 +90,7 @@ class ErrorAnalysis:
             walltime=walltime,
             conda_path=conda_path,
             email=email,
+            node_size=node_size,
             original_file=original_file,
             decompressed_file=decompressed_file,
             metrics_csv_path=metrics_csv_path,

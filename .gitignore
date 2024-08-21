@@ -5,6 +5,11 @@ Error_Analysis_Scripts/Logs/*
 Post_Hoc_Scripts/Logs/*
 .venv/
 Compressors/*
+Sample/ERR1044277_1.fastq
+Sample/GCF_000001405.40_GRCh38.p14_genomic.*
+Sample/FASTQ_fields
+Sample/ERR1044277_2.fastq
+
 
 
 

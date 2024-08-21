@@ -33,5 +33,5 @@ def detect_data_type(file_path):
 
 
 # Example usage
-file_path = '/scratch/tus53997/FASTQ/FASTQ_fields/ERR1044277_1_1000000_quality_scores.bin'
+file_path = ''
 detect_data_type(file_path)

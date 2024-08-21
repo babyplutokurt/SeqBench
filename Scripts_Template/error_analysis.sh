@@ -1,7 +1,7 @@
 #!/bin/sh
 #PBS -l walltime={{ walltime }}
 #PBS -N {{ job_name }}
-#PBS -q large
+#PBS -q {{ node_size }}
 #PBS -l nodes={{ nodes }}:ppn={{ ppn }}
 #PBS -M {{ email }}
 #PBS -o {{ output_log }}
