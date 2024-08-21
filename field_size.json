@@ -1,3 +1,6 @@
 {
-
+    "/home/tus53997/SeqBench/Sample/ERR1044277_1_Sample.fastq": {
+        "compressed_bases_id_size": 72288,
+        "compressed_bases_size": 288457
+    }
 }
