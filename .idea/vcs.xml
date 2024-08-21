@@ -3,6 +3,11 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Compressors/BFQzip" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Compressors/BFQzip/BFQzip" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Compressors/BFQzip/BFQzip/external/SPRING" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Compressors/BFQzip/BFQzip/external/egap" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Compressors/BFQzip/BFQzip/external/gsufsort" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Compressors/BFQzip/BFQzip/external/libbsc" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Compressors/BFQzip/external/SPRING" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Compressors/BFQzip/external/egap" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Compressors/BFQzip/external/gsufsort" vcs="Git" />

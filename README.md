@@ -64,7 +64,18 @@ make
 
 Please use the following command to compile compressors 
 ```bash
+chmod +x ./compressors_setup.sh
+./compressors_setup.sh
 ```
+Please noticed that in BFQZIP, "./BFQzip/BFQzip/src_int_mem/bfq_int.cpp",  replace line 681, I believe this is a bug.
+```bash
+uint64_t CLUST_SIZES[MAX_CLUST_LEN+1]{0};
+```
+with 
+```bash
+std::vector<uint64_t> CLUST_SIZES(MAX_CLUST_LEN+1, 0);
+```
+
 
 ## Configuration
 
